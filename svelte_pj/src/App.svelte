@@ -12,6 +12,8 @@
 		<Link to='/about'>About</Link>
 	</nav>
 
+	<p>뭐지;;;</p>
+
 	<Route path='/' component={Home} />
 	<Route path='/about' component={About} />
 </Router>
