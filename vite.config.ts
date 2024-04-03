@@ -12,11 +12,6 @@ export default defineConfig({
   plugins: [
     react()
   ],
-  build: {
-    outDir: "dist",
-    minify: "terser",
-    assetsDir: "assets",
-  },
   server: {
     port: 7777,
     strictPort: true
