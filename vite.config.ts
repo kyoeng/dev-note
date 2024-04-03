@@ -1,7 +1,24 @@
-import { purgeCss } from 'vite-plugin-tailwind-purgecss';
-import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
+// https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [sveltekit(), purgeCss()]
-});
+  base: './',
+  resolve: {
+    alias: {
+      
+    }
+  },
+  plugins: [
+    react()
+  ],
+  build: {
+    outDir: "dist",
+    minify: "terser",
+    assetsDir: "assets",
+  },
+  server: {
+    port: 7777,
+    strictPort: true
+  }
+})
