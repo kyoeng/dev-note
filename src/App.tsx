@@ -6,7 +6,6 @@ import Index from './pages/index/Index';
 import MainCategoryPage from './pages/mainCategoryPage/MainCategoryPage';
 import { useEffect } from 'react';
 import { update } from './stores/connectDeviceSlice';
-import SiteInfo from './components/siteInfo/SiteInfo';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,8 +19,6 @@ function App() {
   return (
     <>
       <div id='page-container'>
-        {/* <SiteInfo /> */}
-
         <Router>
           <Header />
 
