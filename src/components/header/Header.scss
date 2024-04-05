@@ -1,0 +1,381 @@
+.off {
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+
+
+
+#header-container {
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+
+
+
+    // --- 메뉴 on/off 버튼 부분 ---
+    #show-hd-menu-btn {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(31, 41, 55, 1);
+        border-radius: 50%;
+        opacity: 0.7;
+        cursor: pointer;
+        box-shadow: 0 0 2px rgb(218, 218, 218);
+        z-index: 3;
+
+
+        img {
+            width: 32px;
+            height: 32px;
+            opacity: 0.8;
+        }
+    }
+
+
+    #show-hd-menu-btn:hover {
+        box-shadow: 0 0 5px rgb(218, 218, 218);
+        opacity: 1;
+    }
+
+
+
+
+    // --- 메뉴 부분 ---
+    #hd-menu-container {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        top: 50%;
+        left: 50%;
+        transition: all 0.3s;
+        transform: translate(-50%, -50%);
+        
+    
+        // 메뉴 영역
+        #hd-menu-box {
+            position: absolute;
+            top: calc((100% - 900px) / 2);
+            left: calc((100% - 900px) / 2);
+            width: 900px;
+            height: 900px;
+            border-radius: 50%;
+            transform-origin: center;
+    
+    
+            .menu {
+                position: absolute;
+                width: 150px;
+                height: 150px;
+                box-shadow: 0 0 2px rgb(218, 218, 218);
+                border-radius: 50%;
+                overflow: hidden;
+                background-color: rgba(17, 24, 39, 1);
+                flex-direction: column;
+                gap: 5px;
+
+
+                p {
+                    font-size: 1.5rem;
+                }
+
+                img {
+                    opacity: 0.8;
+                }
+            }
+    
+            .menu:hover {
+                box-shadow: 0 0 5px rgb(218, 218, 218);
+            }
+    
+    
+            .pos1 {
+                top: 25px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+    
+            .pos2 {
+                top: 127px;
+                right: 127px;
+                transform: rotate(45deg);
+            }
+    
+            .pos3 {
+                top: calc((100% - 150px) / 2);
+                right: 25px;
+                transform: rotate(90deg);
+            }
+    
+            .pos4 {
+                bottom: 127px;
+                right: 127px;
+                transform: rotate(135deg);
+            }
+    
+            .pos5 {
+                bottom: 25px;
+                left: calc((100% - 150px) / 2);
+                transform: rotate(180deg);
+            }
+    
+            .pos6 {
+                bottom: 127px;
+                left: 127px;
+                transform: rotate(-135deg);
+            }
+    
+            .pos7 {
+                top: calc((100% - 150px) / 2);
+                left: 25px;
+                transform: rotate(-90deg);
+            }
+    
+            .pos8 {
+                top: 127px;
+                left: 127px;
+                transform: rotate(-45deg);
+            }
+        }
+
+
+        // 드래그 영역
+        #menu-rotate-area {
+            position: absolute;
+            top: calc((100% - 500px) / 2);
+            left: calc((100% - 500px) / 2);
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(218, 218, 218, 0.5);
+            overflow: hidden;
+            display: flex;
+            align-items: start;
+            justify-content: center;
+            cursor: default;
+            z-index: 1;
+
+
+            #menu-rotate-info {
+                width: 200px;
+                height: 100px;
+                gap: 10px;
+                font-size: 1.8rem;
+                margin-top: 25px;
+                opacity: 0.3;
+                overflow: hidden;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                }
+
+                p {
+                    font-size: 2rem;
+                }
+            }
+
+
+            #menu-rotate-info-screen {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                border-radius: 50%;
+            }
+        }
+
+
+        // close 버튼 영역
+        #close-hd-menu-btn-box {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 5px rgba(218, 218, 218, 0.5);
+            z-index: 2;
+        }
+    }
+}
+
+
+
+// background 부분
+#hd-menu-background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s;
+    z-index: 900;
+}
+
+
+
+
+
+@media (max-width: 1080px) {
+    #header-container {
+        width: 50px;
+        height: 50px;
+
+
+
+        // --- 메뉴 on/off 버튼 부분 ---
+        #show-hd-menu-btn {
+            width: 50px;
+            height: 50px;
+
+
+            img {
+                width: 28px;
+                height: 28px;
+                opacity: 0.8;
+                scale: 0.9;
+            }
+        }
+
+        #show-hd-menu-btn:hover {
+            opacity: 0.7;
+            box-shadow: 0 0 2px rgb(218, 218, 218);
+        }
+
+
+
+        // --- 메뉴 부분 ---
+        #hd-menu-container {
+            width: 50px;
+            height: 50px;
+
+
+
+            // 메뉴 영역
+            #hd-menu-box {
+                top: calc((100% - 620px) / 2);
+                left: calc((100% - 620px) / 2);
+                width: 620px;
+                height: 620px;
+
+        
+        
+                .menu {
+                    position: absolute;
+                    width: 100px;
+                    height: 100px;
+                    gap: 5px;
+
+
+                    p {
+                        font-size: 1.2rem;
+                    }
+                }
+        
+                .menu:hover {
+                    box-shadow: 0 0 2px rgb(218, 218, 218);
+                }
+        
+        
+                .pos1 {
+                    top: 25px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+        
+                .pos2 {
+                    top: 95px;
+                    right: 95px;
+                    transform: rotate(45deg);
+                }
+        
+                .pos3 {
+                    top: calc((100% - 100px) / 2);
+                    right: 25px;
+                    transform: rotate(90deg);
+                }
+        
+                .pos4 {
+                    bottom: 95px;
+                    right: 95px;
+                    transform: rotate(135deg);
+                }
+        
+                .pos5 {
+                    bottom: 25px;
+                    left: calc((100% - 100px) / 2);
+                    transform: rotate(180deg);
+                }
+        
+                .pos6 {
+                    bottom: 95px;
+                    left: 95px;
+                    transform: rotate(-135deg);
+                }
+        
+                .pos7 {
+                    top: calc((100% - 100px) / 2);
+                    left: 25px;
+                    transform: rotate(-90deg);
+                }
+        
+                .pos8 {
+                    top: 95px;
+                    left: 95px;
+                    transform: rotate(-45deg);
+                }
+            }
+
+
+
+            // 드래그 영역
+            #menu-rotate-area {
+                top: calc((100% - 320px) / 2);
+                left: calc((100% - 320px) / 2);
+                width: 320px;
+                height: 320px;
+
+
+                #menu-rotate-info {
+                    width: 200px;
+                    height: 50px;
+                    gap: 10px;
+                    font-size: 1.8rem;
+                    margin-top: 25px;
+
+                    img {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    p {
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+
+
+
+            // close 버튼 영역
+            #close-hd-menu-btn-box {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    }
+}
