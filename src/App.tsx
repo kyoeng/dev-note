@@ -23,8 +23,8 @@ function App() {
           <Header />
 
           <Routes>
-            <Route path='/' element={<Index />}/>
-            <Route path='/:category' element={<MainCategoryPage />}/>
+            <Route path='/dev-note' element={<Index />}/>
+            <Route path='/dev-note/:category' element={<MainCategoryPage />}/>
           </Routes>
 
         </Router>

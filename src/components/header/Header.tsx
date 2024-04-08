@@ -150,7 +150,7 @@ function Header() {
                         {
                             routeData.map(({category, text, image}, i: number) => {
                                 return (
-                                    <Link to={`/${category}`} key={`menu-${i + 1}`} className={`flex-center menu pos${i + 1}`} onClick={menuClickEvt}>
+                                    <Link to={`/dev-note/${category}`} key={`menu-${i + 1}`} className={`flex-center menu pos${i + 1}`} onClick={menuClickEvt}>
                                         <img src={image} alt="img" />
                                         <p>{text}</p>
                                     </Link>
