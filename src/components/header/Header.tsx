@@ -142,7 +142,7 @@ function Header() {
 
                 {/* 메뉴 부분 */}
                 <div id="hd-menu" className={isMenuOn ? "menu-on" : "menu-off"}
-                onMouseDown={(e) => e.stopPropagation()} onMouseLeave={(e) => e.stopPropagation()} onMouseMove={(e) => e.stopPropagation()} onMouseUp={(e) => e.stopPropagation()}
+                onMouseDown={(e) => e.stopPropagation()} onMouseLeave={(e) => e.stopPropagation()} onMouseMove={(e) => { e.stopPropagation(); rotateStateOff();} } onMouseUp={(e) => e.stopPropagation()}
                 onTouchStart={(e) => e.stopPropagation()} onTouchMove={(e) => e.stopPropagation()} onTouchEnd={(e) => e.stopPropagation()}>
                     <div id="inner-circle"></div>
 

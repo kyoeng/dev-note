@@ -14,7 +14,6 @@
     left: calc((100% - 70px) / 2);
     border-radius: 50%;
     overflow: hidden;
-    opacity: 0.7;
     z-index: 10000;
 
 
@@ -26,7 +25,6 @@
 
 
 #hd-btn:hover {
-    opacity: 1;
     box-shadow: 0 0 10px rgba($color: #858585, $alpha: 1);
 }
 
@@ -41,7 +39,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     transition: all 0.3s;
     z-index: 5000;
     min-height: 700px;
@@ -55,7 +53,7 @@
         transform: translateX(-50%);
         display: flex;
         gap: 30px;
-        opacity: 0.5;
+        opacity: 0.6;
         bottom: 40%;
 
 
@@ -137,7 +135,6 @@
                 gap: 5px;
                 box-shadow: 0 0 3px rgba($color: #858585, $alpha: 1);
                 background-color: rgb(41, 21, 21);
-                opacity: 0.7;
 
 
                 img {
@@ -153,7 +150,6 @@
 
 
             .menu:hover {
-                opacity: 1;
                 box-shadow: 0 0 10px rgba($color: #858585, $alpha: 1);
             }
 
@@ -228,7 +224,6 @@
     #hd-btn {
         width: 40px;
         height: 40px;
-        opacity: 0.8;
         left: calc((100% - 40px) / 2);
 
 
@@ -240,7 +235,6 @@
     
     
     #hd-btn:hover {
-        opacity: 0.8;
         box-shadow: 0 0 3px rgba($color: #858585, $alpha: 1);
     }
 }
@@ -257,13 +251,7 @@
 
         // 메뉴 회전 안내
         #rotate-menu-info {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
             gap: 30px;
-            opacity: 0.5;
-            bottom: 40%;
 
 
             img {
@@ -321,7 +309,6 @@
 
 
                 .menu:hover {
-                    opacity: 0.7;
                     box-shadow: 0 0 3px rgba($color: #858585, $alpha: 1);
                 }
 
