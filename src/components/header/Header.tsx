@@ -36,6 +36,14 @@ function Header() {
 
 
     /**
+     * 메뉴 클릭 이벤트 
+     */
+    function menuClickEvt() {
+        setIsMenuOn(false);
+    }
+
+
+    /**
      * 회전 가능 상태로 변경
      * @param posX 마우스 or 터치가 시작된 x위치
      */
@@ -52,16 +60,15 @@ function Header() {
         initPosX = null;
     }
 
-
     /**
      * 메뉴 회전 함수
      * @param posX 마우스 or 터치가 되고 있는 x위치
      */
-    function rotateMenu(posX: number) {
+    function rotate(posX: number) {
         if (isRotate && initPosX !== null && menuCircle.current !== null) {
-            const moveValueX = (posX - initPosX) / 2;
+            const moveValueX = connectDevice.isMobile ? (posX - initPosX) / 2 : (posX - initPosX) / 4;
 
-            menuCircleRotateValue += moveValueX;
+            menuCircleRotateValue += -moveValueX;
             menuCircle.current.style.transform = `rotate(${menuCircleRotateValue}deg)`;
 
             initPosX = posX;
@@ -79,7 +86,7 @@ function Header() {
     // 메뉴 드래그 영역 mousemove 함수
     function rotatingEvtPC(e: React.MouseEvent<HTMLDivElement>) {
         if (connectDevice.isMobile) return;
-        rotateMenu(e.clientX);
+        rotate(e.clientX);
     }
     
     // 메뉴 드래그 영역 mouseleave, mouseup 함수
@@ -97,7 +104,7 @@ function Header() {
     // 메뉴 드래그 영역 touchmove 함수
     function rotatingEvtMobile(e: React.TouchEvent<HTMLDivElement>) {
         if (!connectDevice.isMobile) return;
-        rotateMenu(e.touches[0].clientX);
+        rotate(e.touches[0].clientX);
     }
 
     // 메뉴 드래그 영역 touchend 함수
@@ -112,50 +119,48 @@ function Header() {
 
 
     return (
-        <>        
-            <div id="header-container">
-                {/* 메뉴 on/off 버튼 */}
-                <button id="show-hd-menu-btn" className={"flex-center"} onClick={menuOnOff}>
-                    <img src={isMenuOn ? closeIcon : menuIcon} alt="btn" />
-                </button>
+        <div id="hd">
+            {/* 메뉴 on/off 버튼 */}
+            <button id="hd-btn" className="flex-center" onClick={menuOnOff}>
+                <img src={isMenuOn ? closeIcon : menuIcon} alt="btn" style={isMenuOn ? {scale: "0.9"} : {}} />
+            </button>
 
 
-                {/* 메뉴 */}
-                <div id="hd-menu-container" className={isMenuOn ? "" : "off"}>
-                    <div id="hd-menu-box" ref={menuCircle}>
+            {/* 메뉴 */}
+            <div id="hd-menu-container" style={isMenuOn ? {visibility: "visible", opacity: 1} : {visibility: "hidden", opacity: 0}}
+            onMouseDown={rotateOnPC} onMouseMove={rotatingEvtPC} onMouseLeave={rotateOffPC} onMouseUp={rotateOffPC}
+            onTouchStart={rotateOnMobile} onTouchMove={rotatingEvtMobile} onTouchEnd={rotateOffMobile}>
+                {/* 메뉴 회전 안내 부분 */}
+                <div id="rotate-menu-info">
+                    <p id="info-text">드래그로 메뉴 회전</p>
+
+                    <img src={dragLeftIcon} alt="drag-info-img" />
+                    <p className="flex-center">or</p>
+                    <img src={dragRightIcon} alt="drag-info-img" />
+                </div>
+
+
+                {/* 메뉴 부분 */}
+                <div id="hd-menu" className={isMenuOn ? "menu-on" : "menu-off"}
+                onMouseDown={(e) => e.stopPropagation()} onMouseLeave={(e) => e.stopPropagation()} onMouseMove={(e) => e.stopPropagation()} onMouseUp={(e) => e.stopPropagation()}
+                onTouchStart={(e) => e.stopPropagation()} onTouchMove={(e) => e.stopPropagation()} onTouchEnd={(e) => e.stopPropagation()}>
+                    <div id="inner-circle"></div>
+
+                    <div id="menu-circle" ref={menuCircle}>
                         {
                             routeData.map(({category, text, image}, i: number) => {
                                 return (
-                                    <Link to={`/${category}`} className={`menu pos${i + 1} flex-center`} key={`menu-btn${i + 1}`} onClick={() => setIsMenuOn(false)}>
-                                        <img src={image} alt="menu-img" />
+                                    <Link to={`/${category}`} key={`menu-${i + 1}`} className={`flex-center menu pos${i + 1}`} onClick={menuClickEvt}>
+                                        <img src={image} alt="img" />
                                         <p>{text}</p>
                                     </Link>
                                 )
                             })
                         }
                     </div>
-
-
-                    <div id="menu-rotate-area" onTouchStart={rotateOnMobile} onTouchMove={rotatingEvtMobile} onTouchEnd={rotateOffMobile}
-                    onMouseDown={rotateOnPC} onMouseMove={rotatingEvtPC} onMouseUp={rotateOffPC} onMouseLeave={rotateOffPC}>
-                        <div id="menu-rotate-info" className="flex-center">
-                            <img src={dragLeftIcon} alt="drag-left" />
-                            <p>or</p>
-                            <img src={dragRightIcon} alt="drag-left" />
-                        </div>
-
-                        <div id="menu-rotate-info-screen"></div>
-                    </div>
-
-
-                    <div id="close-hd-menu-btn-box"></div>
                 </div>
             </div>
-
-
-            {/* 메뉴 배경 */}
-            <div id="hd-menu-background" className={isMenuOn ? "" : "off"}></div>
-        </>
+        </div>
     )
 }
 
