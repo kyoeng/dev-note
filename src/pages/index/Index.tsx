@@ -26,9 +26,9 @@ function Index() {
                 <div id="category-list">
                     {   
                         routeData.map(({category, text, image}, i: number) => {
-                            if (text !== "Home" && text !== "etc") {
+                            if (text !== "Home") {
                                 return (
-                                    <Link to={`/dev-note/${category}`} key={`menu-${i + 1}`} className={`category`}>
+                                    <Link to={`/dev-note/${category}`} key={`menu-${i + 1}`} className={`category`} style={text === "etc" ? {order: 1} : {}}>
                                         <img src={image} alt="img" />
                                         <p>{text}</p>
                                     </Link>

@@ -29,7 +29,7 @@ const imgSourceData: {img: string, link: React.ReactElement}[] = [
     },
     {
         img: dragLeftIcon,
-        link: <a href="https://www.flaticon.com/kr/free-icons/-" target="_blank" title="아래로 쓸어 내려라 아이콘">아래로 쓸어 내려라 아이콘 제작자: BW Designer - Flaticon</a>
+        link: <a href="https://www.flaticon.com/kr/free-icons/-" target="_blank" title="아래로 쓸어 내려라 아이콘">아래로 스크롤 아이콘 제작자: BW Designer - Flaticon</a>
     },
     {
         img: dragRightIcon,

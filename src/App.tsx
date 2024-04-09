@@ -6,6 +6,7 @@ import Index from './pages/index/Index';
 import MainCategoryPage from './pages/mainCategoryPage/MainCategoryPage';
 import { useEffect } from 'react';
 import { update } from './stores/connectDeviceSlice';
+import Footer from './components/footer/Footer';
 
 function App() {
   const dispatch = useDispatch();
@@ -17,19 +18,18 @@ function App() {
   });
 
   return (
-    <>
-      <div id='page-container'>
-        <Router>
-          <Header />
+    <div id='page-container'>
+      <Router>
+        <Header />
 
-          <Routes>
-            <Route path='/dev-note' element={<Index />}/>
-            <Route path='/dev-note/:category' element={<MainCategoryPage />}/>
-          </Routes>
+        <Routes>
+          <Route path='/dev-note' element={<Index />}/>
+          <Route path='/dev-note/:category' element={<MainCategoryPage />}/>
+        </Routes>
 
-        </Router>
-      </div>
-    </>
+        <Footer />
+      </Router>
+    </div>
   )
 }
 
